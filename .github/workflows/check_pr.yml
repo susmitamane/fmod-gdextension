@@ -1,7 +1,5 @@
 name: 🌈 Check Pull Request
-on:
-  pull_request:
-    branches: "*"
+on: [push]
 
 # Global Settings
 env:
