@@ -74,7 +74,7 @@ jobs:
             shell: bash
 
           - name: MacOS Editor Compilation
-            os: "macos-13"
+            os: "macos-latest"
             platform: macos
             target: editor
             artifact-extension: framework
@@ -87,7 +87,7 @@ jobs:
             shell: bash
 
           - name: MacOS Debug Compilation
-            os: "macos-13"
+            os: "macos-latest"
             platform: macos
             target: template_debug
             artifact-extension: framework
@@ -95,7 +95,7 @@ jobs:
             shell: bash
 
           - name: MacOS Release Compilation
-            os: "macos-13"
+            os: "macos-latest"
             platform: macos
             target: template_release
             artifact-extension: framework
@@ -130,7 +130,7 @@ jobs:
             shell: bash
 
           - name: iOS Debug Compilation
-            os: "macos-13"
+            os: "macos-latest"
             platform: ios
             target: template_debug
             artifact-extension: dylib
@@ -139,7 +139,7 @@ jobs:
             shell: bash
 
           - name: iOS Release Compilation
-            os: "macos-13"
+            os: "macos-latest"
             platform: ios
             target: template_release
             artifact-extension: dylib
@@ -180,7 +180,6 @@ jobs:
           wget https://downloads.tuxfamily.org/godotengine/${{env.GODOT_VERSION}}/Godot_v${{env.GODOT_VERSION}}-stable_${{ matrix.godot-executable-download-suffix }}
           unzip Godot_v${{env.GODOT_VERSION}}-stable_${{ matrix.godot-executable-download-suffix }}
           rm Godot_v${{env.GODOT_VERSION}}-stable_${{ matrix.godot-executable-download-suffix }}
-
       - name: Run tests
         if: matrix.platform != 'android' && matrix.platform != 'ios' && matrix.platform != 'windows' && matrix.target == 'editor'
         run: |
@@ -188,7 +187,6 @@ jobs:
           chmod +x run_tests.sh
           chmod +x ../${{ matrix.godot-executable }}
           ./run_tests.sh ../${{ matrix.godot-executable }}
-
   create-android-plugin:
     needs: [ build ]
     strategy:
